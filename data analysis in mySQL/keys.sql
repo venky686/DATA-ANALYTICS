@@ -1,0 +1,18 @@
+show databases;
+use ds;
+set sql_safe_updates=0;
+select * from sukuna ;
+drop  table venky;
+create table sukuna (id int primary key  auto_increment, name  varchar(34) ,power varchar(90),region varchar(45)); 
+insert into sukuna (name,power,region) values("gojo","very high","tockio"),("youji"," high","karakura town"),("youta","very high","tockio"),("sukuna","extriem","old munck");
+drop table sukuna;
+create table venky (id int ,name varchar(34) primary key,power varchar(90),foreign key(name) references  sukuna(name) on delete cascade );
+alter table sukuna modify name varchar(45) unique;
+alter table venky modify id int unique auto_increment;
+select * from venky order by id asc;
+insert into venky(name,power) values("gojo","very high"),("youji"," high"),("youta","very high"),("sukuna","extriem");
+delete from sukuna where id= 4;
+insert into venky(name,power) values("sukuna","extriem");
+insert into sukuna(name,power,region) values("sukuna","extriem","old munck");
+update sukuna set id=4 where power ='extriem';
+update venky set id=4 where power ='extriem';
