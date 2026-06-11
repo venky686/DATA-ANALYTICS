@@ -1,0 +1,36 @@
+use ds;
+drop table join2;
+drop table join1;
+create table join1 (s_id  int primary key ,s_name varchar(20),m1 int , m2 int , total int unique );
+create table join2(t_id int primary key  ,t_name varchar (20),total int ,grade varchar(5),foreign key(total) references  join1(total) on delete cascade );
+insert into join1 values (1,'venky',70,65,135), (2,'venay',60,60,120), (3,'vishnu',50,50,100), (4,'anil',65,65,130), (5,'varun',70,70,140), (6,'sunil',40,40,80);
+insert into join2 values (101,'ram',135,'A'),(102,'sham',120,'+B'),(103,'ram',100,'-B'),(104,'hary',130,'A'),(105,'dhra',140,'+A'),(106,'arun',80,'c');
+select join1.s_name,join2.t_name from join1 inner join join2 on join1.total =join2.total; 
+select join1.total,join2.t_name from join1 left join join2 on join1.total =join2.total;
+select join1.s_name,join2.total from join1 right join join2 on join1.total =join2.total;
+select join1.s_name,join1.total,join2.grade,join2.t_name from join1 left join join2 on join1.total =join2.total union select join1.s_name,join2.total,join2.grade,join2.t_name from join1 right join join2 on join1.total =join2.total;
+SELECT * FROM weatherHistorty;
+show tables ;
+
+select * from weatherhistory;
+select*from emp1;
+select count('data_column') from emp1;
+select sum(salary) from emp1;
+select round(sum(Humidity),2) from weatherhistory;
+select avg(salary) from emp1;
+select min(salary) from emp1;
+select max(salary) from emp1;
+select age ,count(*)  from emp1 group by age;
+SELECT 'Precip Type',count('Apparent Temperature (C)') AS temperature FROM weatherhistory GROUP BY 'Precip Type';
+SELECT Summary,COUNT(*) AS total_records FROM weatherhistory GROUP BY Summary;
+
+select concat(f_name,l_name) from emp1;
+select trim(concat(f_name,l_name)) from emp1;
+select substr("sql tutrial",4,11) as string_on;
+select substr(concat(f_name,l_name),4,11) from emp1;
+select substr(concat(f_name,l_name),4,11) from emp1;
+select concat(upper(l_name), lower(f_name)) from emp1;
+select length(f_name) from emp1;
+select character_length("hello world") as speak;
+select mid(concat(f_name,l_name),1,5) from emp1;
+select mid("sql tutrial",4,11) as string_on;
